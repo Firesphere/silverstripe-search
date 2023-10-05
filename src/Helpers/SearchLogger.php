@@ -1,23 +1,19 @@
 <?php
 
-namespace Firesphere\ElasticSearch\Helpers;
+namespace Firesphere\SearchBackend\Helpers;
 
 use Firesphere\SearchBackend\Models\SearchLog;
-use GuzzleHttp\Client;
-use HttpException;
 use Psr\Log\LoggerInterface;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\Debug;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\ValidationException;
 
 abstract class SearchLogger
 {
-    /**
-     * @var Client|\Elastic\EnterpriseSearch\Client Client to communicate with search backend
-     */
     protected $client;
 
     /**
@@ -25,12 +21,14 @@ abstract class SearchLogger
      */
     protected $options = [];
 
-    public abstract function __construct();
+    abstract public function __construct();
 
 
     /**
      * Log the given message and dump it out.
-     * Also boot the Log to get the latest errors from Solr
+     * Also boot the Log to get the latest errors from Search
+     *
+     * @todo fix up for generic use
      *
      * @param string $type
      * @param string $message
@@ -46,7 +44,7 @@ abstract class SearchLogger
 
         $err = ($lastError === null) ? 'Unknown' : $lastError->getLastErrorLine();
         $errTime = ($lastError === null) ? 'Unknown' : $lastError->Timestamp;
-        $message .= sprintf('%sLast known Solr error:%s%s: %s', PHP_EOL, PHP_EOL, $errTime, $err);
+        $message .= sprintf('%sLast known Search error:%s%s: %s', PHP_EOL, PHP_EOL, $errTime, $err);
         /** @var LoggerInterface $logger */
         $logger = Injector::inst()->get(LoggerInterface::class);
         $logger->alert($message);
@@ -56,7 +54,7 @@ abstract class SearchLogger
     }
 
     /**
-     * Save the latest Solr errors to the log
+     * Save the latest Search errors to the log
      *
      * @param string $type
      * @param array $logs
@@ -67,7 +65,7 @@ abstract class SearchLogger
     {
         foreach ($logs as $error) {
             $filter = [
-                'Timestamp' => $error['time'],
+                'Timestamp' => $error['time'] ?? DBDatetime::now(),
                 'Index'     => $error['core'] ?? 'x:Unknown',
                 'Level'     => $error['level'],
             ];
