@@ -29,7 +29,7 @@ abstract class SearchLogger
      * Also boot the Log to get the latest errors from Search
      *
      * @todo fix up for generic use
-     * 
+     *
      * @param string $type
      * @param string $message
      * @throws HTTPException
