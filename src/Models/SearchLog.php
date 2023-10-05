@@ -167,19 +167,19 @@ class SearchLog extends DataObject implements PermissionProvider
     {
         return [
             'DELETE_LOG' => [
-                'name'     => _t(self::class . '.PERMISSION_DELETE_DESCRIPTION', 'Delete Solr logs'),
-                'category' => _t('Permissions.LOGS_CATEGORIES', 'Solr logs permissions'),
+                'name'     => _t(self::class . '.PERMISSION_DELETE_DESCRIPTION', 'Delete Elastic logs'),
+                'category' => _t('Permissions.LOGS_CATEGORIES', 'Elastic logs permissions'),
                 'help'     => _t(
                     self::class . '.PERMISSION_DELETE_HELP',
-                    'Permission required to delete existing Solr logs.'
+                    'Permission required to delete existing Elastic logs.'
                 ),
             ],
             'VIEW_LOG'   => [
-                'name'     => _t(self::class . '.PERMISSION_VIEW_DESCRIPTION', 'View Solr logs'),
-                'category' => _t('Permissions.LOGS_CATEGORIES', 'Solr logs permissions'),
+                'name'     => _t(self::class . '.PERMISSION_VIEW_DESCRIPTION', 'View Elastic logs'),
+                'category' => _t('Permissions.LOGS_CATEGORIES', 'Elastic logs permissions'),
                 'help'     => _t(
                     self::class . '.PERMISSION_VIEW_HELP',
-                    'Permission required to view existing Solr logs.'
+                    'Permission required to view existing Elastic logs.'
                 ),
             ],
         ];

@@ -3,8 +3,6 @@
 namespace Firesphere\ElasticSearch\Helpers;
 
 use Firesphere\SearchBackend\Models\SearchLog;
-use GuzzleHttp\Client;
-use HttpException;
 use Psr\Log\LoggerInterface;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -15,9 +13,6 @@ use SilverStripe\ORM\ValidationException;
 
 abstract class SearchLogger
 {
-    /**
-     * @var Client|\Elastic\EnterpriseSearch\Client Client to communicate with search backend
-     */
     protected $client;
 
     /**
@@ -30,7 +25,7 @@ abstract class SearchLogger
 
     /**
      * Log the given message and dump it out.
-     * Also boot the Log to get the latest errors from Solr
+     * Also boot the Log to get the latest errors from Elastic
      *
      * @param string $type
      * @param string $message
@@ -46,7 +41,7 @@ abstract class SearchLogger
 
         $err = ($lastError === null) ? 'Unknown' : $lastError->getLastErrorLine();
         $errTime = ($lastError === null) ? 'Unknown' : $lastError->Timestamp;
-        $message .= sprintf('%sLast known Solr error:%s%s: %s', PHP_EOL, PHP_EOL, $errTime, $err);
+        $message .= sprintf('%sLast known Elastic error:%s%s: %s', PHP_EOL, PHP_EOL, $errTime, $err);
         /** @var LoggerInterface $logger */
         $logger = Injector::inst()->get(LoggerInterface::class);
         $logger->alert($message);
@@ -56,7 +51,7 @@ abstract class SearchLogger
     }
 
     /**
-     * Save the latest Solr errors to the log
+     * Save the latest Elastic errors to the log
      *
      * @param string $type
      * @param array $logs
