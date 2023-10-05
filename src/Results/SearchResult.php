@@ -15,6 +15,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\ViewableData;
+use stdClass;
 
 
 class SearchResult extends ViewableData
