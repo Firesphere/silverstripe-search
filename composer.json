@@ -13,5 +13,15 @@
     "php": "^8",
     "silverstripe/framework": "^4|^5",
     "symbiote/silverstripe-queuedjobs": "^4|^5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Firesphere\\SearchBackend\\": "src"
+    }
+  },
+  "extra": {
+    "expose": [
+      "client/dist"
+    ]
   }
 }
