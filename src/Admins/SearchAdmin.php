@@ -1,8 +1,12 @@
 <?php
+
 namespace Firesphere\SearchBackend\Admins;
 
+use Firesphere\SearchBackend\Models\DirtyClass;
 use Firesphere\SearchBackend\Models\SearchSynonym;
+use Firesphere\SolrSearch\Models\SolrLog;
 use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\View\Requirements;
 
 /**
  * Class \Firesphere\SearchBackend\Admins\SearchAdmin
@@ -33,6 +37,19 @@ class SearchAdmin extends ModelAdmin
      * @var array|string
      */
     private static $managed_models = [
-        SearchSynonym::class
+        SearchSynonym::class,
+        SolrLog::class,
+        DirtyClass::class
     ];
+
+
+    /**
+     * Make sure the custom CSS for highlighting in the GridField is loaded
+     */
+    public function init()
+    {
+        parent::init();
+
+        Requirements::css('firesphere/searchbackend:client/dist/main.css');
+    }
 }
