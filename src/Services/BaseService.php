@@ -2,6 +2,7 @@
 
 namespace Firesphere\SearchBackend\Services;
 
+use LogicException;
 use ReflectionClass;
 use ReflectionException;
 use SilverStripe\Core\ClassInfo;
@@ -62,5 +63,24 @@ class BaseService
         $reflectionClass = new ReflectionClass($subindex);
 
         return $reflectionClass->isInstantiable();
+    }
+
+    public function getValidIndexes($index = null): array
+    {
+        if ($index && !in_array($index, $this->validIndexes, true)) {
+            throw new LogicException('Incorrect index ' . $index);
+        }
+
+        if ($index) {
+            return [$index];
+        }
+
+        // return the array values, to reset the keys
+        return array_values($this->validIndexes);
+    }
+
+    public function setValidIndexes(array $validIndexes): void
+    {
+        $this->validIndexes = $validIndexes;
     }
 }
