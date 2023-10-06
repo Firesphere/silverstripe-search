@@ -1,0 +1,17 @@
+{
+  "name": "firesphere/searchbackend",
+  "description": "Common codebase for searching with Solr or Elastic",
+  "minimum-stability": "stable",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "firesphere",
+      "email": "simon@firesphere.dev"
+    }
+  ],
+  "require": {
+    "php": "^8",
+    "silverstripe/framework": "^4|^5",
+    "symbiote/silverstripe-queuedjobs": "^4|^5"
+  }
+}
