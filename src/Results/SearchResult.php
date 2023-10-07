@@ -3,7 +3,7 @@
 namespace Firesphere\SearchBackend\Results;
 
 use Firesphere\ElasticSearch\Indexes\BaseIndex;
-use Firesphere\ElasticSearch\Queries\BaseQuery;
+use Firesphere\ElasticSearch\Queries\ElasticQuery;
 use Firesphere\ElasticSearch\Services\ElasticCoreService;
 use Firesphere\SearchBackend\Traits\SearchResultGetTrait;
 use Firesphere\SearchBackend\Traits\SearchResultSetTrait;
@@ -24,7 +24,7 @@ class SearchResult extends ViewableData
     use SearchResultSetTrait;
 
     /**
-     * @var BaseQuery Query that has been executed
+     * @var ElasticQuery Query that has been executed
      */
     protected $query;
     /**
@@ -42,10 +42,10 @@ class SearchResult extends ViewableData
      * See Solarium docs for this.
      *
      * @param Result $result
-     * @param BaseQuery $query
+     * @param ElasticQuery $query
      * @param BaseIndex $index
      */
-    public function __construct(Result $result, BaseQuery $query, BaseIndex $index)
+    public function __construct(Result $result, ElasticQuery $query, BaseIndex $index)
     {
         parent::__construct();
         $this->index = $index;
