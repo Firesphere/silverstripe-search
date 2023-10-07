@@ -101,7 +101,7 @@ abstract class DocumentCoreFactory
      * @param Document|array $doc Solr Document
      * @param DataObject|DataObjectSearchExtension $item Item to get the data from
      */
-    protected function addDefaultFields(array|Document $doc, $item)
+    protected function addDefaultFields($doc, $item)
     {
         $doc->setKey(BaseService::ID_FIELD, $item->ClassName . '-' . $item->ID);
         $doc->addField(BaseService::CLASS_ID_FIELD, $item->ID);
