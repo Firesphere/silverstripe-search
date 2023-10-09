@@ -13,6 +13,7 @@ namespace Firesphere\SearchBackend\Traits;
 use Firesphere\SearchBackend\Interfaces\SearchResultInterface;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
+use stdClass;
 
 /**
  * Trait SearchResultSetTrait
@@ -33,7 +34,7 @@ trait SearchResultSetTrait
     protected $facets;
 
     /**
-     * @var Highlighting Highlighted items
+     * @var array|stdClass[] Highlighted items
      */
     protected $highlight;
 
@@ -41,11 +42,11 @@ trait SearchResultSetTrait
      * Set the highlighted items
      *
      * @param $highlight
-     * @return SearchResult
+     * @return SearchResultInterface
      */
-    public function setHighlight($highlight): SearchResultInterface
+    public function setHighlight($highlights): SearchResultInterface
     {
-        $this->highlight = $highlight;
+        $this->highlight = $highlights;
 
         return $this;
     }
