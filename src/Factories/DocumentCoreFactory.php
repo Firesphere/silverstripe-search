@@ -5,9 +5,11 @@ namespace Firesphere\SearchBackend\Factories;
 use Exception;
 use Firesphere\ElasticSearch\Indexes\BaseIndex as ElasticBaseIndex;
 use Firesphere\SearchBackend\Extensions\DataObjectSearchExtension;
+use Firesphere\SearchBackend\Helpers\FieldResolver;
 use Firesphere\SearchBackend\Services\BaseService;
 use Firesphere\SolrSearch\Helpers\DataResolver;
 use Firesphere\SolrSearch\Indexes\BaseIndex as SolrBaseIndex;
+use Psr\Log\LoggerInterface;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Extensible;
@@ -35,6 +37,20 @@ abstract class DocumentCoreFactory
      * @var SS_List Items that need to be manufactured into documents
      */
     protected $items;
+
+    protected $fieldResqlver;
+
+    protected $logger;
+
+    /**
+     * DocumentFactory constructor, sets up the field resolver
+     */
+    public function __construct()
+    {
+        $this->fieldResolver = Injector::inst()->get(FieldResolver::class);
+        $this->logger = $this->getLogger();
+    }
+
     /**
      * Note, it can only take one type of class at a time!
      * So make sure you properly loop and set $class
@@ -45,6 +61,25 @@ abstract class DocumentCoreFactory
      * @throws Exception
      */
     abstract public function buildItems($fields, $index, $update = null): array;
+
+    /**
+     * @return mixed
+     */
+    public function getLogger()
+    {
+        if (!$this->logger) {
+            $this->logger = Injector::inst()->get(LoggerInterface::class);
+        }
+        return $this->logger;
+    }
+
+    /**
+     * @param mixed $logger
+     */
+    public function setLogger($logger): void
+    {
+        $this->logger = $logger;
+    }
 
     /**
      * @param mixed $items
@@ -93,27 +128,6 @@ abstract class DocumentCoreFactory
             PHP_EOL
         );
         $this->getLogger()->info($debugString);
-    }
-
-    /**
-     * Add fields that should always be included
-     *
-     * @param Document|array $doc Solr Document
-     * @param DataObject|DataObjectSearchExtension $item Item to get the data from
-     */
-    protected function addDefaultFields($doc, $item)
-    {
-        $doc->setKey(BaseService::ID_FIELD, $item->ClassName . '-' . $item->ID);
-        $doc->addField(BaseService::CLASS_ID_FIELD, $item->ID);
-        $doc->addField('ClassName', $item->ClassName);
-        $hierarchy = ClassInfo::ancestry($item);
-        $classHierarchy = [];
-        foreach ($hierarchy as $lower => $camel) {
-            $classHierarchy[] = $camel;
-        }
-        $doc->addField('ClassHierarchy', $classHierarchy);
-        $doc->addField('ViewStatus', $item->getViewStatus());
-        $this->extend('updateDefaultFields', $doc, $item);
     }
 
     /**
@@ -170,42 +184,22 @@ abstract class DocumentCoreFactory
     }
 
     /**
-     * Push field to a document
-     *
-     * @param Document $doc Solr document
-     * @param array $options Custom options
-     * @param string $type Type of Solr field
-     * @param DBField|string|null $value Value(s) of the field
-     */
-    protected function addToDoc($doc, $options, $type, $value): void
-    {
-        /* Solr requires dates in the form 1995-12-31T23:59:59Z, so we need to normalize to GMT */
-        if (($value && $type === 'tdate') || $value instanceof DBDate) {
-            $value = gmdate('Y-m-d\TH:i:s\Z', strtotime($value));
-        }
-
-        $name = getShortFieldName($options['name']);
-
-        $doc->addField($name, $value, $options['boost'], Document::MODIFIER_SET);
-    }
-
-    /**
      * Are we debugging?
      *
      * @return bool
      */
     public function isDebug(): bool
     {
-        return $this->debug;
+        return (bool)$this->debug;
     }
 
     /**
      * Set to true if debugging should be enabled
      *
      * @param bool $debug
-     * @return DocumentFactory
+     * @return DocumentCoreFactory
      */
-    public function setDebug(bool $debug): DocumentFactory
+    public function setDebug(bool $debug): DocumentCoreFactory
     {
         $this->debug = $debug;
 

@@ -6,6 +6,8 @@ use Elastic\Elasticsearch\Exception\HttpClientException;
 use Exception;
 use Firesphere\SearchBackend\Helpers\IndexingHelper;
 use HttpException;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\DB;
 use Solarium\Exception\HttpException as SolrException;
@@ -32,6 +34,23 @@ trait IndexingTrait
 
         return [$vars, $group, $isGroup];
     }
+
+
+    /**
+     * Check if PCNTL is available and/or useable.
+     * The unittest param is from phpunit.xml.dist, meant to bypass the exit(0) call
+     * The pcntl parameter check is for unit tests, but PHPUnit does not support PCNTL (yet)
+     *
+     * @return bool
+     */
+    private function hasPCNTL(): bool
+    {
+        return Director::is_cli() &&
+            function_exists('pcntl_fork') &&
+            (Controller::curr()->getRequest()->getVar('unittest') === 'pcntl' ||
+                !Controller::curr()->getRequest()->getVar('unittest'));
+    }
+
 
     /**
      * For each core, spawn a child process that will handle a separate group.
