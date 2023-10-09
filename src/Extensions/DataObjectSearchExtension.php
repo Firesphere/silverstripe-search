@@ -10,6 +10,11 @@ use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\InheritedPermissionsExtension;
 use SilverStripe\SiteConfig\SiteConfig;
 
+/**
+ * Class \Firesphere\SearchBackend\Extensions\DataObjectSearchExtension
+ *
+ * @property DataObject|DataObjectSearchExtension $owner
+ */
 class DataObjectSearchExtension extends DataExtension
 {
     /**

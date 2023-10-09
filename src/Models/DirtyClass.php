@@ -9,6 +9,9 @@ use SilverStripe\Security\Member;
 /**
  * Class \Firesphere\SearchBackend\Models\DirtyClass
  *
+ * @property string $Type
+ * @property string $Class
+ * @property string $IDs
  */
 class DirtyClass extends DataObject
 {
