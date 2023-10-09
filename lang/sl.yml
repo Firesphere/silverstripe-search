@@ -1,0 +1,29 @@
+en:
+  Firesphere\SearchBackend\Admins\SearchAdmin:
+    MENUTITLE: Iskanje
+  Firesphere\SearchBackend\Models\DirtyClass:
+    DIRTYIDS: 'Spremenjeni ID-ji'
+    PLURALNAME: 'Spremenjeni razredi'
+    PLURALS:
+      one: 'Spremenjen razred'
+      other: '{count} spremenjenih razredov'
+    SINGULARNAME: 'Spremenjen razred'
+  Firesphere\SearchBackend\Models\SearchLog:
+    PERMISSION_DELETE_DESCRIPTION: 'Izbriši dnevnike iskanja'
+    PERMISSION_DELETE_HELP: 'Dovoljenje za brisanje obstoječih dnevnikov iskanja.'
+    PERMISSION_VIEW_DESCRIPTION: 'Pregled dnevnikov iskanja'
+    PERMISSION_VIEW_HELP: 'Dovoljenje za ogled obstoječih dnevnikov iskanja.'
+    PLURALNAME: 'Dnevniki iskanja'
+    PLURALS:
+      one: 'Dnevnik iskanja'
+      other: '{count} dnevnikov iskanja'
+    SINGULARNAME: 'Dnevnik iskanja'
+  Firesphere\SearchBackend\Models\SearchSynonym:
+    PLURALNAME: 'Sopomenke iskanja'
+    PLURALS:
+      one: 'Sopomenka iskanja'
+      other: '{count} sopomenk iskanja'
+    SINGULARNAME: 'Sopomenka iskanja'
+    SYNONYM: 'Ustvarite sopomenke za dano ključno besedo, dodajte jih ločene z vejicami.'
+  Permissions:
+    LOGS_CATEGORIES: 'Dovoljenja za dnevnike iskanja'
