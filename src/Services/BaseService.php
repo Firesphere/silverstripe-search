@@ -10,6 +10,19 @@ use SilverStripe\Core\ClassInfo;
 class BaseService
 {
     /**
+     * Unique ID in Search engine
+     */
+    const ID_FIELD = 'id';
+    /**
+     * SilverStripe ID of the object
+     */
+    const CLASS_ID_FIELD = 'ObjectID';
+    /**
+     * Name of the field that can be used for queries
+     */
+    const CLASSNAME = 'ClassName';
+
+    /**
      * @var array Base indexes that exist
      */
     protected $baseIndexes = [];
