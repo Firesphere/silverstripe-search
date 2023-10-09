@@ -9,7 +9,7 @@ use SilverStripe\Security\Member;
 use SilverStripe\Security\PermissionProvider;
 
 /**
- * Class \Firesphere\ElasticSearch\Models\ElasticLog
+ * Class \Firesphere\SearchSearch\Models\SearchLog
  *
  * @property string $Timestamp
  * @property string $Index
@@ -167,19 +167,19 @@ class SearchLog extends DataObject implements PermissionProvider
     {
         return [
             'DELETE_LOG' => [
-                'name'     => _t(self::class . '.PERMISSION_DELETE_DESCRIPTION', 'Delete Elastic logs'),
-                'category' => _t('Permissions.LOGS_CATEGORIES', 'Elastic logs permissions'),
+                'name'     => _t(self::class . '.PERMISSION_DELETE_DESCRIPTION', 'Delete Search logs'),
+                'category' => _t('Permissions.LOGS_CATEGORIES', 'Search logs permissions'),
                 'help'     => _t(
                     self::class . '.PERMISSION_DELETE_HELP',
-                    'Permission required to delete existing Elastic logs.'
+                    'Permission required to delete existing Search logs.'
                 ),
             ],
             'VIEW_LOG'   => [
-                'name'     => _t(self::class . '.PERMISSION_VIEW_DESCRIPTION', 'View Elastic logs'),
-                'category' => _t('Permissions.LOGS_CATEGORIES', 'Elastic logs permissions'),
+                'name'     => _t(self::class . '.PERMISSION_VIEW_DESCRIPTION', 'View Search logs'),
+                'category' => _t('Permissions.LOGS_CATEGORIES', 'Search logs permissions'),
                 'help'     => _t(
                     self::class . '.PERMISSION_VIEW_HELP',
-                    'Permission required to view existing Elastic logs.'
+                    'Permission required to view existing Search logs.'
                 ),
             ],
         ];

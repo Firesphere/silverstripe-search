@@ -1,0 +1,29 @@
+en:
+  Firesphere\SearchBackend\Admins\SearchAdmin:
+    MENUTITLE: Search
+  Firesphere\SearchBackend\Models\DirtyClass:
+    DIRTYIDS: 'Dirty IDs'
+    PLURALNAME: 'Dirty classes'
+    PLURALS:
+      one: 'A Dirty class'
+      other: '{count} Dirty classes'
+    SINGULARNAME: 'Dirty class'
+  Firesphere\SearchBackend\Models\SearchLog:
+    PERMISSION_DELETE_DESCRIPTION: 'Delete Search logs'
+    PERMISSION_DELETE_HELP: 'Permission required to delete existing Search logs.'
+    PERMISSION_VIEW_DESCRIPTION: 'View Search logs'
+    PERMISSION_VIEW_HELP: 'Permission required to view existing Search logs.'
+    PLURALNAME: 'Search Logs'
+    PLURALS:
+      one: 'A Search Log'
+      other: '{count} Search Logs'
+    SINGULARNAME: 'Search Log'
+  Firesphere\SearchBackend\Models\SearchSynonym:
+    PLURALNAME: 'Search synonyms'
+    PLURALS:
+      one: 'A Search synonym'
+      other: '{count} Search synonyms'
+    SINGULARNAME: 'Search synonym'
+    SYNONYM: 'Create synonyms for a given keyword, add as many synonyms comma separated.'
+  Permissions:
+    LOGS_CATEGORIES: 'Search logs permissions'

@@ -1,7 +1,7 @@
 <?php
 /**
  * Trait SearchResultGetTrait|Firesphere\SearchBackend\Traits\SearchResultGetTrait Getters for
- * {@link \Firesphere\SearchBackend\Results\SearchResult}
+ * {@link \Firesphere\SearchBackend\Interfaces\SearchResultInterface}
  *
  * @package Firesphere\Elastic\Search
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
@@ -25,7 +25,7 @@ trait SearchResultGetTrait
     /**
      * @var int Total items in the result
      */
-    protected $totalItems;
+    protected $totalItems = 0;
 
     /**
      * @var ArrayData Facet results
@@ -54,7 +54,7 @@ trait SearchResultGetTrait
      */
     public function getFacets(): ArrayData
     {
-        return $this->facets;
+        return $this->facets ?? ArrayData::create();
     }
 
     /**
@@ -64,7 +64,7 @@ trait SearchResultGetTrait
      */
     public function getCollatedSpellcheck()
     {
-        return $this->collatedSpellcheck;
+        return $this->collatedSpellcheck ?? '';
     }
 
     /**
@@ -74,7 +74,7 @@ trait SearchResultGetTrait
      */
     public function getHighlight()
     {
-        return $this->highlight;
+        return $this->highlight ?? [];
     }
 
     /**
@@ -84,7 +84,7 @@ trait SearchResultGetTrait
      */
     public function getSpellcheck(): ArrayList
     {
-        return $this->spellcheck;
+        return $this->spellcheck ?? ArrayList::create();
     }
 
     /**

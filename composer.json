@@ -13,7 +13,7 @@
     "php": "^8",
     "silverstripe/framework": "^4|^5",
     "symbiote/silverstripe-queuedjobs": "^4|^5",
-    "firesphere/healthcheckjobs": "^0.0.4"
+    "firesphere/healthcheckjobs": "^0.0.5"
   },
   "autoload": {
     "psr-4": {
