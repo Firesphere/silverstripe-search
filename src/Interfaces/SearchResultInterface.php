@@ -17,7 +17,16 @@ interface SearchResultInterface
      */
     public function getMatches(): ArrayList;
 
+    /**
+     * Paginated version of getPaginatedMatches
+     * @return PaginatedList
+     */
     public function getPaginatedMatches(): PaginatedList;
 
-
+    /**
+     * Get the highlights for a specific document
+     * @param string|int $docId ID of the document to search for
+     * @return string
+     */
+    public function getHighlightByID($docId): string;
 }
