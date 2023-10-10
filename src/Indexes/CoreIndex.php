@@ -2,13 +2,11 @@
 
 namespace Firesphere\SearchBackend\Indexes;
 
-use Firesphere\ElasticSearch\Traits\IndexTraits\BaseIndexTrait;
 use SilverStripe\Core\Extensible;
 
 abstract class CoreIndex
 {
     use Extensible;
-    use BaseIndexTrait;
 
     /**
      * Field types that can be added
