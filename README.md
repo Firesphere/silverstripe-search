@@ -1,6 +1,6 @@
 # Modern Silverstripe search
 
-### This module is made possibly thanks to [Pikselin](https://pikselin.com)
+### This module is made possible thanks to [Pikselin](https://pikselin.com)
 
 This module provides the shared codebase between Solr and Elastic
 and potentially any future search engines.
