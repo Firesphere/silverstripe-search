@@ -2,7 +2,7 @@
 /**
  * class Statics|Firesphere\SearchBackend\Helpers\Statics TypeMap support
  *
- * @package Firesphere\Solr\Search
+ * @package Firesphere\Search\Backend
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
@@ -15,7 +15,7 @@ use SilverStripe\Core\Config\Configurable;
  * Class Statics
  * Typemap static helper
  *
- * @package Firesphere\Solr\Search
+ * @package Firesphere\Search\Backend
  */
 class Statics
 {

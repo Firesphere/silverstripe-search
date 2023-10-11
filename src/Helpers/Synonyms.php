@@ -2,7 +2,7 @@
 /**
  * class Synonyms|Firesphere\SearchBackend\Helpers\Synonyms Get the default UK-US synonyms helper
  *
- * @package Firesphere\Search\Search
+ * @package Firesphere\Search\Backend
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
@@ -16,7 +16,7 @@ use SilverStripe\Core\Config\Configurable;
  * List out UK to US synonyms and synonyms from {@link SiteConfig}
  * Source: @link https://raw.githubusercontent.com/heiswayi/spelling-uk-vs-us/
  *
- * @package Firesphere\Search\Search
+ * @package Firesphere\Search\Backend
  */
 class Synonyms
 {

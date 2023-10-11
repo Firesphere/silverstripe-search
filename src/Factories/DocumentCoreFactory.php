@@ -19,7 +19,7 @@ use SilverStripe\ORM\SS_List;
  * Class DocumentFactory
  * Factory to create documents to be pushed to Solr
  *
- * @package Firesphere\Solr\Search
+ * @package Firesphere\Search\Backend
  */
 abstract class DocumentCoreFactory
 {

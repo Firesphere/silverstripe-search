@@ -3,7 +3,7 @@
  * Trait SearchResultSetTrait|Firesphere\SearchBackend\Traits\SearchResultSetTrait Setters for
  * {@link \Firesphere\SearchBackend\Interfaces\SearchResultInterface}
  *
- * @package Firesphere\Elastic\Search
+ * @package Firesphere\Search\Backend
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
@@ -20,7 +20,7 @@ use stdClass;
  *
  * Getters for search results to keep the {@link SearchResultInterface} class clean.
  *
- * @package Firesphere\Elastic\Search
+ * @package Firesphere\Search\Backend
  */
 trait SearchResultSetTrait
 {

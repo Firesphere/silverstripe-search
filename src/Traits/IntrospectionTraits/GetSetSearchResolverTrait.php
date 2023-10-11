@@ -3,7 +3,7 @@
  * Trait GetSetSearchResolverTrait|Firesphere\SearchBackend\Traits\GetSetSearchResolverTrait Used to extract methods from
  * the {@link \Firesphere\SearchBackend\Helpers\FieldResolver} to make the code more readable
  *
- * @package Firesphere\SearchCore\Search
+ * @package Firesphere\Search\Backend
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
@@ -19,7 +19,7 @@ use Firesphere\SolrSearch\Indexes\BaseIndex as SolrIndex;
  * Setters and getters to help with introspection/resolving, it's fairly simple, but extracted
  * so it's cleaner to read the code
  *
- * @package Firesphere\Solr\Search
+ * @package Firesphere\Search\Backend
  */
 trait GetSetSearchResolverTrait
 {

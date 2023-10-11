@@ -3,7 +3,7 @@
  * class SiteState|Firesphere\SearchBackend\States\SiteState Base implementation of SiteState to be used by e.g.
  * the Fluent extension
  *
- * @package Firesphere\SearchCore\Search
+ * @package Firesphere\Search\Backend
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
@@ -34,7 +34,7 @@ use SilverStripe\ORM\DataObject;
  *
  * States, options, etc. are simplified for a more streamlined approach
  *
- * @package Firesphere\SearchCore\Search
+ * @package Firesphere\Search\Backend
  */
 abstract class SiteState
 {

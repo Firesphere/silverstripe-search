@@ -2,7 +2,7 @@
 /**
  * class GridFieldExtension|Firesphere\SearchBackend\Extensions\GridFieldExtension Add colours to the GridField
  *
- * @package Firesphere\Solr\Search
+ * @package Firesphere\Search\Backend
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
@@ -19,7 +19,7 @@ use SilverStripe\View\ViewableData;
  * Class GridFieldExtension
  * Dirty hack to get the alert/warning/info classes in to the gridfield
  *
- * @package Firesphere\Solr\Search
+ * @package Firesphere\Search\Backend
  * @property GridField|GridFieldExtension $owner
  */
 class GridFieldExtension extends Extension
