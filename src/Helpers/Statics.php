@@ -27,7 +27,8 @@ class Statics
     protected static $typemap;
 
     /**
-     * Get the typemap
+     * Get the typemap for Solr
+     * Note that this is very Solr oriented at the moment
      *
      * @return array
      */

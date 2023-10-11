@@ -10,8 +10,8 @@
 
 namespace Firesphere\SearchBackend\Traits\IntrospectionTraits;
 
-use Firesphere\SolrSearch\Indexes\BaseIndex as SolrIndex;
 use Firesphere\ElasticSearch\Indexes\BaseIndex as ElasticIndex;
+use Firesphere\SolrSearch\Indexes\BaseIndex as SolrIndex;
 
 /**
  * Setters and getters for the introspection.

@@ -18,17 +18,6 @@ class IndexingHelper
      */
     protected static $cores;
 
-    public static function getCores(): int
-    {
-        // Always be on the safe side, use only 1 core
-        return self::$cores ?? 1;
-    }
-
-    public static function setCores(int $cores): void
-    {
-        self::$cores = $cores;
-    }
-
     /**
      * Check the amount of groups and the total against the isGroup check.
      *
@@ -50,6 +39,7 @@ class IndexingHelper
         if (!self::$batch_length) {
             self::$batch_length = self::config()->get('batchLength') ?? 10;
         }
+
         return self::$batch_length;
     }
 
@@ -58,4 +48,14 @@ class IndexingHelper
         self::$batch_length = $batch_length;
     }
 
+    public static function getCores(): int
+    {
+        // Always be on the safe side, use only 1 core
+        return self::$cores ?? 1;
+    }
+
+    public static function setCores(int $cores): void
+    {
+        self::$cores = $cores;
+    }
 }

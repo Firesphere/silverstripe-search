@@ -4,19 +4,16 @@ namespace Firesphere\SearchBackend\Factories;
 
 use Exception;
 use Firesphere\ElasticSearch\Indexes\BaseIndex as ElasticBaseIndex;
-use Firesphere\SearchBackend\Extensions\DataObjectSearchExtension;
+use Firesphere\SearchBackend\Helpers\DataResolver;
 use Firesphere\SearchBackend\Helpers\FieldResolver;
-use Firesphere\SearchBackend\Services\BaseService;
-use Firesphere\SolrSearch\Helpers\DataResolver;
 use Firesphere\SolrSearch\Indexes\BaseIndex as SolrBaseIndex;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
-use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Extensible;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
-use Solarium\QueryType\Update\Query\Document;
 
 /**
  * Class DocumentFactory
@@ -28,6 +25,7 @@ abstract class DocumentCoreFactory
 {
     use Extensible;
     use Configurable;
+
     /**
      * @var string Name of the class being indexed
      */
@@ -52,24 +50,15 @@ abstract class DocumentCoreFactory
     }
 
     /**
-     * Note, it can only take one type of class at a time!
-     * So make sure you properly loop and set $class
-     *
-     * @param array $fields Fields to index
-     * @param ElasticBaseIndex|SolrBaseIndex $index Index to push the documents to
-     * @return array Documents to be pushed
-     * @throws Exception
-     */
-    abstract public function buildItems($fields, $index, $update = null): array;
-
-    /**
      * @return mixed
+     * @throws NotFoundExceptionInterface
      */
     public function getLogger()
     {
         if (!$this->logger) {
             $this->logger = Injector::inst()->get(LoggerInterface::class);
         }
+
         return $this->logger;
     }
 
@@ -82,35 +71,53 @@ abstract class DocumentCoreFactory
     }
 
     /**
-     * @param mixed $items
+     * Note, it can only take one type of class at a time!
+     * So make sure you properly loop and set $class
+     *
+     * @param array $fields Fields to index
+     * @param ElasticBaseIndex|SolrBaseIndex $index Index to push the documents to
+     * @return array Documents to be pushed
+     * @throws Exception
      */
-    public function setItems($items): void
+    abstract public function buildItems($fields, $index, $update = null): array;
+
+    /**
+     * Are we debugging?
+     *
+     * @return bool
+     */
+    public function isDebug(): bool
     {
-        $this->items = $items;
+        return (bool)$this->debug;
     }
 
     /**
-     * @return mixed
+     * Set to true if debugging should be enabled
+     *
+     * @param bool $debug
+     * @return DocumentCoreFactory
      */
-    public function getItems()
+    public function setDebug(bool $debug): DocumentCoreFactory
     {
-        return $this->items;
+        $this->debug = $debug;
+
+        return $this;
     }
 
     /**
-     * @param mixed $class
+     * @return mixed|object|Injector
      */
-    public function setClass($class): void
+    public function getFieldResolver(): mixed
     {
-        $this->class = $class;
+        return $this->fieldResolver;
     }
 
     /**
-     * @return mixed
+     * @param mixed|object|Injector $fieldResolver
      */
-    public function getClass()
+    public function setFieldResolver(mixed $fieldResolver): void
     {
-        return $this->class;
+        $this->fieldResolver = $fieldResolver;
     }
 
     /**
@@ -128,6 +135,38 @@ abstract class DocumentCoreFactory
             PHP_EOL
         );
         $this->getLogger()->info($debugString);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
+     * @param mixed $class
+     */
+    public function setClass($class): void
+    {
+        $this->class = $class;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param mixed $items
+     */
+    public function setItems($items): void
+    {
+        $this->items = $items;
     }
 
     /**
@@ -181,44 +220,5 @@ abstract class DocumentCoreFactory
         }
 
         return $valuesForField;
-    }
-
-    /**
-     * Are we debugging?
-     *
-     * @return bool
-     */
-    public function isDebug(): bool
-    {
-        return (bool)$this->debug;
-    }
-
-    /**
-     * Set to true if debugging should be enabled
-     *
-     * @param bool $debug
-     * @return DocumentCoreFactory
-     */
-    public function setDebug(bool $debug): DocumentCoreFactory
-    {
-        $this->debug = $debug;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed|object|Injector
-     */
-    public function getFieldResolver(): mixed
-    {
-        return $this->fieldResolver;
-    }
-
-    /**
-     * @param mixed|object|Injector $fieldResolver
-     */
-    public function setFieldResolver(mixed $fieldResolver): void
-    {
-        $this->fieldResolver = $fieldResolver;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Firesphere\SearchBackend\Traits\QueryTraits;
 
-use Minimalcode\Search\Criteria;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\Security;
@@ -12,7 +11,6 @@ use SilverStripe\Security\Security;
  */
 trait QueryFilterTrait
 {
-
     /**
      * Add filtering on view status
      */
@@ -34,5 +32,4 @@ trait QueryFilterTrait
 
         return $viewIDs;
     }
-
 }

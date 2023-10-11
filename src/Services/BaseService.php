@@ -6,21 +6,24 @@ use LogicException;
 use ReflectionClass;
 use ReflectionException;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Config\Configurable;
 
 class BaseService
 {
+    use Configurable;
+
     /**
      * Unique ID in Search engine
      */
-    const ID_FIELD = 'id';
+    public const ID_FIELD = 'id';
     /**
      * SilverStripe ID of the object
      */
-    const CLASS_ID_FIELD = 'ObjectID';
+    public const CLASS_ID_FIELD = 'ObjectID';
     /**
      * Name of the field that can be used for queries
      */
-    const CLASSNAME = 'ClassName';
+    public const CLASSNAME = 'ClassName';
 
     /**
      * @var array Base indexes that exist
@@ -38,7 +41,6 @@ class BaseService
     {
         $this->baseIndexes = ClassInfo::subclassesFor($baseIndexClass);
         $this->filterIndexes();
-
     }
 
     /**

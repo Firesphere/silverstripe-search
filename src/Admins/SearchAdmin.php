@@ -14,7 +14,6 @@ use SilverStripe\View\Requirements;
  */
 class SearchAdmin extends ModelAdmin
 {
-
     /**
      * @var string Add a pretty magnifying glass to the sidebar menu
      */

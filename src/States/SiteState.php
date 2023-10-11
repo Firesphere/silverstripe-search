@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
 
-
 namespace Firesphere\SearchBackend\States;
 
 use Firesphere\SearchBackend\Helpers\FieldResolver;
@@ -42,7 +41,7 @@ abstract class SiteState
     use Configurable;
     use Injectable;
 
-    const DEFAULT_STATE = 'default';
+    public const DEFAULT_STATE = 'default';
     /**
      * States that can be applied
      *

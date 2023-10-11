@@ -250,6 +250,37 @@ class FieldResolver
     }
 
     /**
+     * Resolve the next item in line to be indexed
+     *
+     * @param array $options
+     * @param $lookup
+     * @param $dataClass
+     * @param string $source
+     * @param array $next
+     * @return array[]
+     * @throws Exception
+     */
+    protected function resolveNext(array $options, $lookup, $dataClass, string $source, array $next): array
+    {
+        $schema = DataObject::getSchema();
+        $options['multi_valued'] = false;
+
+        $class = $this->getRelationData($lookup, $schema, $dataClass, $options);
+
+        if (is_string($class) && $class) {
+            if (!isset($options['origin'])) {
+                $options['origin'] = $source;
+            }
+
+            // we add suffix here to prevent the relation to be overwritten by other instances
+            // all sources lookups must clean the source name before reading it via getSourceName()
+            $next[$class . '|xkcd|' . $dataClass] = $options;
+        }
+
+        return [$options, $next];
+    }
+
+    /**
      * Relational data
      *
      * @param $lookup
@@ -368,7 +399,8 @@ class FieldResolver
         $fieldOptions,
         $dataclass,
         string $type
-    ): array {
+    ): array
+    {
         // Trim arguments off the type string
         if (preg_match('/^(\w+)\(/', $type, $match)) {
             $type = $match[1];
@@ -397,7 +429,8 @@ class FieldResolver
         $dataclass,
         $type,
         $found
-    ): array {
+    ): array
+    {
         // Get the origin
         $origin = $fieldOptions['origin'] ?? $dataclass;
 
@@ -412,36 +445,5 @@ class FieldResolver
         ];
 
         return $found;
-    }
-
-    /**
-     * Resolve the next item in line to be indexed
-     *
-     * @param array $options
-     * @param $lookup
-     * @param $dataClass
-     * @param string $source
-     * @param array $next
-     * @return array[]
-     * @throws Exception
-     */
-    protected function resolveNext(array $options, $lookup, $dataClass, string $source, array $next): array
-    {
-        $schema = DataObject::getSchema();
-        $options['multi_valued'] = false;
-
-        $class = $this->getRelationData($lookup, $schema, $dataClass, $options);
-
-        if (is_string($class) && $class) {
-            if (!isset($options['origin'])) {
-                $options['origin'] = $source;
-            }
-
-            // we add suffix here to prevent the relation to be overwritten by other instances
-            // all sources lookups must clean the source name before reading it via getSourceName()
-            $next[$class . '|xkcd|' . $dataClass] = $options;
-        }
-
-        return [$options, $next];
     }
 }

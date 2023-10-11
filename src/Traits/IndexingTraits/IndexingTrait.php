@@ -14,7 +14,6 @@ use Solarium\Exception\HttpException as SolrException;
 
 trait IndexingTrait
 {
-
     /**
      * Set up the requirements for this task
      *
@@ -35,6 +34,25 @@ trait IndexingTrait
         return [$vars, $group, $isGroup];
     }
 
+    /**
+     * Index the classes for a specific index
+     *
+     * @param array $classes Classes that need indexing
+     * @param bool $isGroup Indexing a specific group?
+     * @param int $group Group to index
+     * @return int|bool
+     * @throws Exception
+     * @throws HTTPException|HttpClientException|SolrException
+     */
+    protected function indexClassForIndex(array $classes, bool $isGroup, int $group)
+    {
+        $groups = 0;
+        foreach ($classes as $class) {
+            $groups = $this->indexClass($isGroup, $class, $group);
+        }
+
+        return $groups;
+    }
 
     /**
      * Check if PCNTL is available and/or useable.
@@ -50,7 +68,6 @@ trait IndexingTrait
             (Controller::curr()->getRequest()->getVar('unittest') === 'pcntl' ||
                 !Controller::curr()->getRequest()->getVar('unittest'));
     }
-
 
     /**
      * For each core, spawn a child process that will handle a separate group.
@@ -87,26 +104,6 @@ trait IndexingTrait
     }
 
     /**
-     * Index the classes for a specific index
-     *
-     * @param array $classes Classes that need indexing
-     * @param bool $isGroup Indexing a specific group?
-     * @param int $group Group to index
-     * @return int|bool
-     * @throws Exception
-     * @throws HTTPException|HttpClientException|SolrException
-     */
-    protected function indexClassForIndex(array $classes, bool $isGroup, int $group)
-    {
-        $groups = 0;
-        foreach ($classes as $class) {
-            $groups = $this->indexClass($isGroup, $class, $group);
-        }
-
-        return $groups;
-    }
-
-    /**
      * Create a fork and run the child
      *
      * @codeCoverageIgnore Can't be tested because PCNTL is not available
@@ -126,5 +123,4 @@ trait IndexingTrait
         DB::connect($config);
         $this->runChild($class, $pid, $start);
     }
-
 }

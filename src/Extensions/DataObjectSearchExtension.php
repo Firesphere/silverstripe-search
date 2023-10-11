@@ -61,30 +61,6 @@ class DataObjectSearchExtension extends DataExtension
         return $permissions;
     }
 
-
-    /**
-     * Find or create a new DirtyClass for recording dirty IDs
-     *
-     * @param string $type
-     * @return DirtyClass
-     * @throws ValidationException
-     */
-    protected function getDirtyClass(string $type)
-    {
-        // Get the DirtyClass object for this item
-        /** @var null|DirtyClass $record */
-        $record = DirtyClass::get()->filter(['Class' => $this->owner->ClassName, 'Type' => $type])->first();
-        if (!$record || !$record->exists()) {
-            $record = DirtyClass::create([
-                'Class' => $this->owner->ClassName,
-                'Type'  => $type,
-            ]);
-            $record->write();
-        }
-
-        return $record;
-    }
-
     /**
      * Determine the view permissions based on group settings
      *
@@ -117,4 +93,26 @@ class DataObjectSearchExtension extends DataExtension
         return $return;
     }
 
+    /**
+     * Find or create a new DirtyClass for recording dirty IDs
+     *
+     * @param string $type
+     * @return DirtyClass
+     * @throws ValidationException
+     */
+    protected function getDirtyClass(string $type)
+    {
+        // Get the DirtyClass object for this item
+        /** @var null|DirtyClass $record */
+        $record = DirtyClass::get()->filter(['Class' => $this->owner->ClassName, 'Type' => $type])->first();
+        if (!$record || !$record->exists()) {
+            $record = DirtyClass::create([
+                'Class' => $this->owner->ClassName,
+                'Type'  => $type,
+            ]);
+            $record->write();
+        }
+
+        return $record;
+    }
 }

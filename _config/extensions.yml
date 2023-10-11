@@ -1,3 +1,6 @@
 SilverStripe\ORM\DataObject:
   extensions:
     - Firesphere\SearchBackend\Extensions\DataObjectSearchExtension
+SilverStripe\Forms\GridField\GridField:
+  extensions:
+    - Firesphere\SearchBackend\Extensions\GridFieldExtension

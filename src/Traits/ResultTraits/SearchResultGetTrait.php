@@ -12,6 +12,7 @@ namespace Firesphere\SearchBackend\Traits;
 
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
+use Solarium\Component\Highlighting\Highlighting;
 
 /**
  * Trait SearchResultGetTrait
@@ -70,7 +71,7 @@ trait SearchResultGetTrait
     /**
      * Get the highlighting
      *
-     * @return Highlighting|null
+     * @return array|Highlighting
      */
     public function getHighlight()
     {

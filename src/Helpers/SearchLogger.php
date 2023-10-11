@@ -28,12 +28,12 @@ abstract class SearchLogger
      * Log the given message and dump it out.
      * Also boot the Log to get the latest errors from Search
      *
-     * @todo fix up for generic use
-     *
      * @param string $type
      * @param string $message
      * @throws HTTPException
      * @throws ValidationException
+     * @todo fix up for generic use
+     *
      */
     public static function logMessage($type, $message): void
     {

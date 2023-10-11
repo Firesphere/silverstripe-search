@@ -1,4 +1,5 @@
 <?php
+
 namespace Firesphere\SearchBackend\Models;
 
 use SilverStripe\Forms\FieldList;
@@ -97,5 +98,4 @@ class DirtyClass extends DataObject
     {
         return false;
     }
-
 }
