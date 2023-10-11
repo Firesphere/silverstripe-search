@@ -100,7 +100,7 @@ class DataObjectSearchExtension extends DataExtension
      * @return DirtyClass
      * @throws ValidationException
      */
-    protected function getDirtyClass(string $type)
+    public function getDirtyClass(string $type)
     {
         // Get the DirtyClass object for this item
         /** @var null|DirtyClass $record */
