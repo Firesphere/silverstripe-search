@@ -38,8 +38,15 @@ abstract class DocumentCoreFactory
      */
     protected $items;
 
+    /**
+     * @var FieldResolver
+     */
     protected $fieldResolver;
 
+    /**
+     * Set debug mode on or off
+     * @var bool
+     */
     protected $debug;
 
     /**
@@ -203,5 +210,12 @@ abstract class DocumentCoreFactory
         }
 
         return $valuesForField;
+    }
+
+    protected function getShortFieldName($name)
+    {
+        $name = explode('\\', $name);
+
+        return end($name);
     }
 }
