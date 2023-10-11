@@ -16,7 +16,7 @@ trait QueryFilterTrait
     /**
      * Add filtering on view status
      */
-    protected function getViewStatusFilter(): array
+    public function getViewStatusFilter(): array
     {
         // Filter by what the user is allowed to see
         $viewIDs = ['null']; // null is always an option as that means publicly visible
