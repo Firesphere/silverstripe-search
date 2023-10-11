@@ -9,6 +9,7 @@
 
 namespace Firesphere\SearchBackend\Traits;
 
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
 use SilverStripe\Core\Injector\Injector;
 
@@ -32,6 +33,7 @@ trait LoggerTrait
      * Get the logger
      *
      * @return LoggerInterface
+     * @throws NotFoundExceptionInterface
      */
     public function getLogger()
     {

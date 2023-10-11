@@ -6,6 +6,7 @@ use Exception;
 use Firesphere\ElasticSearch\Indexes\BaseIndex as ElasticBaseIndex;
 use Firesphere\SearchBackend\Helpers\DataResolver;
 use Firesphere\SearchBackend\Helpers\FieldResolver;
+use Firesphere\SearchBackend\Traits\LoggerTrait;
 use Firesphere\SolrSearch\Indexes\BaseIndex as SolrBaseIndex;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
@@ -25,6 +26,7 @@ abstract class DocumentCoreFactory
 {
     use Extensible;
     use Configurable;
+    use LoggerTrait;
 
     /**
      * @var string Name of the class being indexed
@@ -36,9 +38,9 @@ abstract class DocumentCoreFactory
      */
     protected $items;
 
-    protected $fieldResqlver;
+    protected $fieldResolver;
 
-    protected $logger;
+    protected $debug;
 
     /**
      * DocumentFactory constructor, sets up the field resolver
@@ -47,27 +49,6 @@ abstract class DocumentCoreFactory
     {
         $this->fieldResolver = Injector::inst()->get(FieldResolver::class);
         $this->logger = $this->getLogger();
-    }
-
-    /**
-     * @return mixed
-     * @throws NotFoundExceptionInterface
-     */
-    public function getLogger()
-    {
-        if (!$this->logger) {
-            $this->logger = Injector::inst()->get(LoggerInterface::class);
-        }
-
-        return $this->logger;
-    }
-
-    /**
-     * @param mixed $logger
-     */
-    public function setLogger($logger): void
-    {
-        $this->logger = $logger;
     }
 
     /**
@@ -80,6 +61,8 @@ abstract class DocumentCoreFactory
      * @throws Exception
      */
     abstract public function buildItems($fields, $index, $update = null): array;
+
+    abstract protected function addDefaultFields($doc, $item);
 
     /**
      * Are we debugging?
