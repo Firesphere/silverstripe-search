@@ -3,7 +3,7 @@
 namespace Firesphere\SearchBackend\Factories;
 
 use Exception;
-use Firesphere\ElasticSearch\Indexes\BaseIndex as ElasticBaseIndex;
+use Firesphere\ElasticSearch\Indexes\ElasticIndex as ElasticBaseIndex;
 use Firesphere\SearchBackend\Helpers\DataResolver;
 use Firesphere\SearchBackend\Helpers\FieldResolver;
 use Firesphere\SearchBackend\Traits\LoggerTrait;
