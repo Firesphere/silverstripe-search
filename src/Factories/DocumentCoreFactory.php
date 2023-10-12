@@ -9,12 +9,12 @@ use Firesphere\SearchBackend\Helpers\FieldResolver;
 use Firesphere\SearchBackend\Traits\LoggerTrait;
 use Firesphere\SolrSearch\Indexes\BaseIndex as SolrBaseIndex;
 use Psr\Container\NotFoundExceptionInterface;
-use Psr\Log\LoggerInterface;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Extensible;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\SS_List;
+use SilverStripe\ORM\UniqueKey\UniqueKeyInterface;
 
 /**
  * Class DocumentFactory
@@ -48,13 +48,19 @@ abstract class DocumentCoreFactory
      * @var bool
      */
     protected $debug;
+    /**
+     * @var UniqueKeyInterface
+     */
+    protected $keyService;
 
     /**
      * DocumentFactory constructor, sets up the field resolver
+     * @throws NotFoundExceptionInterface
      */
     public function __construct()
     {
         $this->fieldResolver = Injector::inst()->get(FieldResolver::class);
+        $this->keyService = Injector::inst()->get(UniqueKeyInterface::class);
         $this->logger = $this->getLogger();
     }
 
