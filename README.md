@@ -7,7 +7,6 @@ and potentially any future search engines.
 
 This module on its own does not do much.
 
-
 ## Installation
 
 `composer require firesphere/searchbackend`

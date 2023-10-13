@@ -34,9 +34,9 @@ abstract class CoreIndex
     public function getFieldsForIndexing(): array
     {
         $facets = [];
-//        foreach ($this->getFacetFields() as $field) {
-//            $facets[] = $field['Field'];
-//        }
+        //        foreach ($this->getFacetFields() as $field) {
+        //            $facets[] = $field['Field'];
+        //        }
         // Return values to make the key reset
         // Only return unique values
         // And make it all a single array

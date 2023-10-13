@@ -399,7 +399,8 @@ class FieldResolver
         $fieldOptions,
         $dataclass,
         string $type
-    ): array {
+    ): array
+    {
         // Trim arguments off the type string
         if (preg_match('/^(\w+)\(/', $type, $match)) {
             $type = $match[1];
@@ -428,7 +429,8 @@ class FieldResolver
         $dataclass,
         $type,
         $found
-    ): array {
+    ): array
+    {
         // Get the origin
         $origin = $fieldOptions['origin'] ?? $dataclass;
 

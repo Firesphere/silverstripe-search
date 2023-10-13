@@ -75,8 +75,6 @@ abstract class DocumentCoreFactory
      */
     abstract public function buildItems($fields, $index, $update = null): array;
 
-    abstract protected function addDefaultFields($doc, $item);
-
     /**
      * Are we debugging?
      *
@@ -115,6 +113,8 @@ abstract class DocumentCoreFactory
     {
         $this->fieldResolver = $fieldResolver;
     }
+
+    abstract protected function addDefaultFields($doc, $item);
 
     /**
      * Show the message about what is being indexed
