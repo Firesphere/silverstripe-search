@@ -44,11 +44,6 @@ trait SearchResultGetTrait
     protected $spellcheck;
 
     /**
-     * @var string Collated spellcheck
-     */
-    protected $collatedSpellcheck;
-
-    /**
      * Retrieve the facets from the results
      *
      * @return ArrayData
@@ -56,16 +51,6 @@ trait SearchResultGetTrait
     public function getFacets(): ArrayData
     {
         return $this->facets ?? ArrayData::create();
-    }
-
-    /**
-     * Get the collated spellcheck
-     *
-     * @return string
-     */
-    public function getCollatedSpellcheck()
-    {
-        return $this->collatedSpellcheck ?? '';
     }
 
     /**

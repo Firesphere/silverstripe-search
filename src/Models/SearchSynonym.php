@@ -1,7 +1,14 @@
 <?php
+/**
+ *
+ * @package Firesphere\Elastic\Search
+ * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
+ * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
+ */
 
 namespace Firesphere\SearchBackend\Models;
 
+use Firesphere\ElasticSearch\Extensions\ElasticSynonymExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataObject;
 
@@ -65,7 +72,7 @@ class SearchSynonym extends DataObject
     }
 
     /**
-     * Combine this synonym in to a string for the Solr synonyms.txt file
+     * Combine this synonym in to a string for the Elastic synonyms, or Solr synonyms.txt file
      *
      * @return string
      */
