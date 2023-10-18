@@ -4,6 +4,8 @@ namespace Firesphere\SearchBackend\Interfaces;
 
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\PaginatedList;
+use Solarium\Component\Result\FacetSet;
+use stdClass;
 
 interface SearchResultInterface
 {
@@ -35,11 +37,11 @@ interface SearchResultInterface
 
     /**
      * Create a single facet array for a faceted class
-     * @param $facets
-     * @param $options
-     * @param $class
+     * @param stdClass|FacetSet $facets
+     * @param array|stdClass $options
+     * @param string $class
      * @param array $facetArray
-     * @return mixed
+     * @return array
      */
-    public function createFacet($facets, $options, $class, array $facetArray);
+    public function createFacet($facets, $options, $class, array $facetArray): array;
 }

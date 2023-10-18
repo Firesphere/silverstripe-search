@@ -68,7 +68,7 @@ trait SearchResultSetTrait
     /**
      * Set the facets to build
      *
-     * @param FacetSet|null $facets
+     * @param stdClass|FacetSet $facets
      * @return self
      */
     public function setFacets($facets): self
@@ -82,7 +82,7 @@ trait SearchResultSetTrait
     /**
      * Build the given list of key-value pairs in to a SilverStripe useable array
      *
-     * @param FacetSet|null $facets
+     * @param stdClass|FacetSet $facets
      * @return ArrayData
      */
     protected function buildFacets($facets): ArrayData
