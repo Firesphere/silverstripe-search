@@ -1,0 +1,66 @@
+---
+Name: ElasticTypemap
+---
+Firesphere\ElasticSearch\Helpers\Statics:
+  typemap:
+    "*": text
+    PrimaryKey: integer
+    HTMLVarchar: text
+    "SilverStripe\\ORM\\FieldType\\DBHTMLVarchar": text
+    "DBHTMLVarchar": text
+    HTMLText: text
+    "SilverStripe\\ORM\\FieldType\\DBHTMLText": text
+    "DBHTMLText": text
+    Varchar: text
+    "SilverStripe\\ORM\\FieldType\\DBVarchar": text
+    "DBVarchar": text
+    Enum: text
+    "SilverStripe\\ORM\\FieldType\\DBEnum": text
+    "DBEnum": text
+    Text: text
+    "SilverStripe\\ORM\\FieldType\\DBText": text
+    "DBText": text
+    text: text
+    "SilverStripe\\ORM\\FieldType\\DBtext": text
+    "DBtext": text
+    Boolean: boolean
+    "SilverStripe\\ORM\\FieldType\\DBBoolean": boolean
+    "DBBoolean": boolean
+    Date: date
+    "SilverStripe\\ORM\\FieldType\\DBDate": date
+    "DBDate": date
+    Time: date
+    "SilverStripe\\ORM\\FieldType\\DBTime": date
+    "DBTime": date
+    Datetime: date
+    "SilverStripe\\ORM\\FieldType\\DBDatetime": date
+    "DBDatetime": date
+    ForeignKey: integer
+    "SilverStripe\\ORM\\FieldType\\DBForeignKey": integer
+    "DBForeignKey": integer
+    Int: integer
+    "SilverStripe\\ORM\\FieldType\\DBInt": integer
+    "DBInt": integer
+    BigInt: integer
+    "SilverStripe\\ORM\\FieldType\\DBBigInt": integer
+    "DBBigInt": integer
+    Float: float
+    "SilverStripe\\ORM\\FieldType\\DBFloat": float
+    "DBFloat": float
+    Decimal: float
+    "SilverStripe\\ORM\\FieldType\\DBDecimal": float
+    "DBDecimal": float
+    Double: double
+    "SilverStripe\\ORM\\FieldType\\DBDouble": double
+    "DBDouble": double
+    Money: float
+    "SilverStripe\\ORM\\FieldType\\DBMoney": float
+    "DBMoney": float
+    Currency: float
+    "SilverStripe\\ORM\\FieldType\\DBCurrency": float
+    "DBCurrency": float
+    ClassName: text
+    "SilverStripe\\ORM\\FieldType\\DBClassName": text
+    DBClassName: text
+    "SilverStripe\\ORM\\FieldType\\HTMLFragment": text
+    HTMLFragment: text
