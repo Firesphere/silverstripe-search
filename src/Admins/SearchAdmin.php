@@ -3,8 +3,8 @@
 namespace Firesphere\SearchBackend\Admins;
 
 use Firesphere\SearchBackend\Models\DirtyClass;
+use Firesphere\SearchBackend\Models\SearchLog;
 use Firesphere\SearchBackend\Models\SearchSynonym;
-use Firesphere\SolrSearch\Models\SolrLog;
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\View\Requirements;
 
@@ -37,7 +37,7 @@ class SearchAdmin extends ModelAdmin
      */
     private static $managed_models = [
         SearchSynonym::class,
-        SolrLog::class,
+        SearchLog::class,
         DirtyClass::class
     ];
 
