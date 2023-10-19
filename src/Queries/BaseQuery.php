@@ -220,6 +220,20 @@ abstract class BaseQuery
         return $this;
     }
 
+    /**
+     * Add a sort field and direction
+     *
+     * @param string $field
+     * @param string $direction
+     * @return self
+     */
+    public function addSort($field, $direction): self
+    {
+        $this->sort[$field] = $direction;
+
+        return $this;
+    }
+
     public function getBoostedFields(): array
     {
         return $this->boostedFields;

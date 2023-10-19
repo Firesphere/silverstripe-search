@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package Firesphere\Elastic\Search
+ * @package Firesphere\Search\Search
  * @author Simon `Firesphere` Erkelens; Marco `Sheepy` Hermo
  * @copyright Copyright (c) 2018 - now() Firesphere & Sheepy
  */
