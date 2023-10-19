@@ -12,8 +12,7 @@
   "require": {
     "php": "^8",
     "silverstripe/framework": "^4|^5",
-    "symbiote/silverstripe-queuedjobs": "^4|^5",
-    "firesphere/healthcheckjobs": "^0.0.5"
+    "symbiote/silverstripe-queuedjobs": "^4|^5"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
@@ -31,5 +30,8 @@
     "branch-alias": {
       "dev-main": "1.x-dev"
     }
+  },
+  "sugest": {
+    "firesphere/healthcheckjobs": "Keep a tab on your cron and/or queued jobs"
   }
 }
