@@ -1,11 +1,17 @@
 # Modern Silverstripe search
 
-### This module is made possible thanks to [Pikselin](https://pikselin.com)
+## License
 
-This module provides the shared codebase between Solr and Elastic
+[./LICENSE.md](GPL v3)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Firesphere/silverstripe-search/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Firesphere/silverstripe-search/?branch=main)
+
+
+This module provides the shared codebase between Solr
 and potentially any future search engines.
 
-This module on its own does not do much.
+This module on its own does not do much, and unless you are planning on building
+another search engine support, there is no reason to install it.
 
 ## Installation
 
@@ -14,7 +20,6 @@ This module on its own does not do much.
 ## Search engines
 
 - Solr: `firesphere/solr-search`
-- Elastic: `firesphere/elastic-search`
 
 # Interfaces:
 

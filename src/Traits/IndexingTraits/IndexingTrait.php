@@ -2,7 +2,6 @@
 
 namespace Firesphere\SearchBackend\Traits\IndexingTraits;
 
-use Elastic\Elasticsearch\Exception\HttpClientException;
 use Exception;
 use Firesphere\SearchBackend\Helpers\IndexingHelper;
 use HttpException;

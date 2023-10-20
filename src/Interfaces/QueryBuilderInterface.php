@@ -3,14 +3,14 @@
 namespace Firesphere\SearchBackend\Interfaces;
 
 use Firesphere\SearchBackend\Indexes\CoreIndex;
-use Firesphere\SearchBackend\Queries\BaseQuery;
+use Firesphere\SearchBackend\Queries\CoreQuery;
 
 interface QueryBuilderInterface
 {
     /**
-     * @param BaseQuery $query
+     * @param CoreQuery $query
      * @param CoreIndex $index
      * @return mixed
      */
-    public static function buildQuery(BaseQuery $query, CoreIndex $index);
+    public static function buildQuery(CoreQuery $query, CoreIndex $index);
 }

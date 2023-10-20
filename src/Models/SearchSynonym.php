@@ -8,7 +8,6 @@
 
 namespace Firesphere\SearchBackend\Models;
 
-use Firesphere\ElasticSearch\Extensions\ElasticSynonymExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataObject;
 
@@ -17,7 +16,6 @@ use SilverStripe\ORM\DataObject;
  *
  * @property string $Keyword
  * @property string $Synonym
- * @mixin ElasticSynonymExtension
  */
 class SearchSynonym extends DataObject
 {
@@ -72,7 +70,7 @@ class SearchSynonym extends DataObject
     }
 
     /**
-     * Combine this synonym in to a string for the Elastic synonyms, or Solr synonyms.txt file
+     * Combine this synonym in to a string for the synonyms, like Solr synonyms.txt file
      *
      * @return string
      */
@@ -82,7 +80,7 @@ class SearchSynonym extends DataObject
     }
 
     /**
-     * Get an ID for usage as reference, e.g. in Elastic.
+     * Get an ID for usage as reference, e.g. in Solr.
      * Using the Table name as an identifier from the Base synonyms
      * @return string
      */

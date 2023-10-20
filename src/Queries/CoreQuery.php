@@ -2,7 +2,12 @@
 
 namespace Firesphere\SearchBackend\Queries;
 
-abstract class BaseQuery
+use Firesphere\SearchBackend\Interfaces\QueryInterface;
+
+/**
+ * Default querying interface,
+ */
+class CoreQuery implements QueryInterface
 {
     /**
      * @var int Pagination start
@@ -77,20 +82,28 @@ abstract class BaseQuery
      * @param string $term Term to search for
      * @param array $fields fields to boost on
      * @param int $boost Boost value
-     * @param bool|float|null $fuzzy True or a value to the maximum amount of iterations
+     * @param float|bool $fuzzy True or a value to the maximum amount of iterations
      * @return $this
-     * @todo fix this to not be Solr~ish
      * For generic boosting, use @addBoostedField($field, $boost), this will add the boost at Index time
-     *
      */
-    abstract public function addTerm(string $term, array $fields = [], int $boost = 1, $fuzzy = null): self;
+    public function addTerm(string $term, array $fields = [], int $boost = 0, float|bool $fuzzy = false): self
+    {
+        $this->terms[] = [
+            'text'   => $term,
+            'fields' => $fields,
+            'boost'  => $boost,
+            'fuzzy'  => $fuzzy,
+        ];
+
+        return $this;
+    }
 
     /**
      * @param string $key Field to apply filter on
      * @param string|array $value Value(s) to filter on
-     * @return BaseQuery
+     * @return CoreQuery
      */
-    public function addFilter($key, $value): BaseQuery
+    public function addFilter($key, $value): CoreQuery
     {
         $this->filters[$key] = $value;
 
@@ -107,9 +120,9 @@ abstract class BaseQuery
 
     /**
      * @param array $filters
-     * @return BaseQuery
+     * @return CoreQuery
      */
-    public function setFilters(array $filters): BaseQuery
+    public function setFilters(array $filters): CoreQuery
     {
         $this->filters = $filters;
 
@@ -128,12 +141,12 @@ abstract class BaseQuery
 
     /**
      * Set the or filters for this query
-     * @param array $orFilters
+     * @param array $filters
      * @return self
      */
-    public function setOrFilters(array $orFilters): self
+    public function setOrFilters(array $filters): self
     {
-        $this->orFilters = $orFilters;
+        $this->orFilters = $filters;
 
         return $this;
     }
@@ -141,12 +154,12 @@ abstract class BaseQuery
     /**
      * Add the or filters in a key-value pair
      * @param string $key
-     * @param string $orFilters
+     * @param string $value
      * @return self
      */
-    public function addOrFilters(string $key, string $orFilters): self
+    public function addOrFilter(string $key, string $value): self
     {
-        $this->orFilters[$key] = $orFilters;
+        $this->orFilters[$key] = $value;
 
         return $this;
     }

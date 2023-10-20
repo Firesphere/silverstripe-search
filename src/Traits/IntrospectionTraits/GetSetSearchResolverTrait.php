@@ -10,7 +10,6 @@
 
 namespace Firesphere\SearchBackend\Traits\IntrospectionTraits;
 
-use Firesphere\ElasticSearch\Indexes\ElasticIndex as ElasticIndex;
 use Firesphere\SolrSearch\Indexes\BaseIndex as SolrIndex;
 
 /**
@@ -24,16 +23,16 @@ use Firesphere\SolrSearch\Indexes\BaseIndex as SolrIndex;
 trait GetSetSearchResolverTrait
 {
     /**
-     * @var SolrIndex|ElasticIndex Index to use
+     * @var SolrIndex Index to use
      */
     protected $index;
 
     /**
      * Get the current index
      *
-     * @return SolrIndex|ElasticIndex
+     * @return SolrIndex
      */
-    public function getIndex(): SolrIndex|ElasticIndex
+    public function getIndex(): SolrIndex
     {
         return $this->index;
     }
@@ -41,7 +40,7 @@ trait GetSetSearchResolverTrait
     /**
      * Set the current index
      *
-     * @param SolrIndex|ElasticIndex $index
+     * @param SolrIndex $index
      * @return $this
      */
     public function setIndex($index)

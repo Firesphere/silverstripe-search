@@ -1,8 +1,8 @@
 {
   "name": "firesphere/searchbackend",
-  "description": "Common codebase for searching with Solr or Elastic",
+  "description": "Common codebase for searching with Solr",
   "minimum-stability": "stable",
-  "license": "BSD-3-Clause",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "firesphere",
@@ -33,5 +33,17 @@
   },
   "sugest": {
     "firesphere/healthcheckjobs": "Keep a tab on your cron and/or queued jobs"
-  }
+  },
+  "config": {
+    "sort-packages": true,
+    "process-timeout": 600,
+    "allow-plugins": {
+      "composer/installers": true,
+      "silverstripe/vendor-plugin": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "silverstripe/recipe-plugin": true,
+      "php-http/discovery": true
+    }
+  },
+  "prefer-stable": true
 }

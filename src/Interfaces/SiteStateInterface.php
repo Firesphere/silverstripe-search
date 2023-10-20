@@ -10,7 +10,7 @@
 
 namespace Firesphere\SearchBackend\Interfaces;
 
-use Firesphere\SearchBackend\Queries\BaseQuery;
+use Firesphere\SearchBackend\Queries\CoreQuery;
 
 /**
  * Interface SiteStateInterface defines the methods every State altering must implement.
@@ -56,7 +56,7 @@ interface SiteStateInterface
     /**
      * Method to alter the query. Can be no-op.
      *
-     * @param BaseQuery $query
+     * @param CoreQuery $query
      * @return mixed
      */
     public function updateQuery(&$query);

@@ -3,9 +3,9 @@
 namespace Firesphere\SearchBackend\Factories;
 
 use Exception;
-use Firesphere\ElasticSearch\Indexes\ElasticIndex as ElasticBaseIndex;
 use Firesphere\SearchBackend\Helpers\DataResolver;
 use Firesphere\SearchBackend\Helpers\FieldResolver;
+use Firesphere\SearchBackend\Indexes\CoreIndex;
 use Firesphere\SearchBackend\Traits\LoggerTrait;
 use Firesphere\SolrSearch\Indexes\BaseIndex as SolrBaseIndex;
 use Psr\Container\NotFoundExceptionInterface;
@@ -69,7 +69,7 @@ abstract class DocumentCoreFactory
      * So make sure you properly loop and set $class
      *
      * @param array $fields Fields to index
-     * @param ElasticBaseIndex|SolrBaseIndex $index Index to push the documents to
+     * @param SolrBaseIndex $index Index to push the documents to
      * @return array Documents to be pushed
      * @throws Exception
      */
@@ -119,7 +119,8 @@ abstract class DocumentCoreFactory
     /**
      * Show the message about what is being indexed
      *
-     * @param ElasticBaseIndex|SolrBaseIndex $index
+     * @param CoreIndex $index
+     * @throws NotFoundExceptionInterface
      */
     protected function indexGroupMessage($index): void
     {
@@ -134,7 +135,7 @@ abstract class DocumentCoreFactory
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getClass()
     {
