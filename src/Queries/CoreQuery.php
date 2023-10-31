@@ -86,7 +86,7 @@ class CoreQuery implements QueryInterface
      * @return $this
      * For generic boosting, use @addBoostedField($field, $boost), this will add the boost at Index time
      */
-    public function addTerm(string $term, array $fields = [], int $boost = 0, float|bool $fuzzy = false): self
+    public function addTerm(string $term, array $fields = [], int $boost = 0, float|bool|null $fuzzy = false): self
     {
         $this->terms[] = [
             'text'   => $term,
