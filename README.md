@@ -2,7 +2,7 @@
 
 ## License
 
-[GPL v3 or later](LICENSE.md)
+[LGPL v3 or later](LICENSE.md)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Firesphere/silverstripe-search/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Firesphere/silverstripe-search/?branch=main)
 

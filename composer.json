@@ -2,7 +2,7 @@
   "name": "firesphere/searchbackend",
   "description": "Common codebase for searching with Solr",
   "minimum-stability": "stable",
-  "license": "GPL-3.0-or-later",
+  "license": "LGPL-3.0-or-later",
   "authors": [
     {
       "name": "firesphere",
