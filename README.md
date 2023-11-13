@@ -1,3 +1,8 @@
+# MOVED TO CODEBERG
+[https://codeberg.org/Firesphere/silverstripe-search](https://codeberg.org/Firesphere/silverstripe-search)
+# Isues and Pull Requests here will not be responded to
+
+
 # Modern Silverstripe search
 
 ## License
